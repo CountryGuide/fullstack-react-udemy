@@ -1,18 +1,30 @@
-const express = require('express');
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const express       = require('express');
+const mongoose      = require('mongoose');
+const cookieSession = require('cookie-session');
+const passport      = require('passport');
+const keys          = require('./config/keys');
 
-const clientID = '823166575512-gt41naa8gtts846o081i6agh41s2lt1j.apps.googleusercontent.com';
-const clientSecret = 'Rb5mpJC8s4Vq0KuJWAplfgRc';
+require('./models/User');
+require('./services/passport');
 
-const app = express();
+mongoose.connect(keys.mongoURI)
+    .then(() => console.log('Successfully connected to MongoDB'))
+    .catch(err => console.log(err));
+
+const app  = express();
 const PORT = process.env.PORT || 3001;
 
-passport.use(new GoogleStrategy());
+app.use(
+    cookieSession({
+        maxAge: 30 * 24 * 3600 * 1000,
+        keys:   [keys.cookieKey]
+    })
+);
 
-app.get('/', (req, res) => {
-    res.send({ message: 'test' });
-});
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./routes/auth')(app);
 
 app.listen(PORT, () => {
     console.log(`App is running on port: ${PORT}`);

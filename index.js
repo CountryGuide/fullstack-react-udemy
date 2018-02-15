@@ -1,6 +1,7 @@
 const express       = require('express');
 const mongoose      = require('mongoose');
 const cookieSession = require('cookie-session');
+const logger = require('morgan');
 const passport      = require('passport');
 const keys          = require('./config/keys');
 
@@ -8,12 +9,13 @@ require('./models/User');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI)
-    .then(() => console.log('Successfully connected to MongoDB'))
+    .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.log(err));
 
 const app  = express();
 const PORT = process.env.PORT || 3001;
 
+app.use(logger('dev'));
 app.use(
     cookieSession({
         maxAge: 30 * 24 * 3600 * 1000,

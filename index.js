@@ -1,7 +1,7 @@
 const express       = require('express');
 const mongoose      = require('mongoose');
 const cookieSession = require('cookie-session');
-const logger = require('morgan');
+const logger        = require('morgan');
 const passport      = require('passport');
 const keys          = require('./config/keys');
 

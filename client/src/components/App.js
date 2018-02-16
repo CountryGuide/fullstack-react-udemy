@@ -1,9 +1,9 @@
 import React from 'react';
-import {connect} from "react-redux";
-import {BrowserRouter, Route} from 'react-router-dom';
+import { connect } from "react-redux";
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from "./Header";
-import {Landing} from "./Landing";
+import { Landing } from "./Landing";
 
 import * as actions from "../actions";
 
@@ -13,11 +13,11 @@ const Survey    = () => <h2>Survey</h2>;
 
 
 class App extends React.Component {
-    componentDidMount() {
+    componentDidMount () {
         this.props.fetchUser();
     }
 
-    render() {
+    render () {
         return (
             <div>
                 <BrowserRouter>

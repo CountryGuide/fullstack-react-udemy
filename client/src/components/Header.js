@@ -1,30 +1,41 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import Payments from "./Payments";
 
 
 class Header extends React.Component {
-    renderContent () {
+    renderContent() {
         switch (this.props.authState) {
             case null:
                 return;
             case false:
                 return (
-                    <a className="uk-button uk-button-default" href="/auth/google">
-                        <span className="uk-margin-small-right">Log In</span>
-                        <i className="fab fa-google-plus-g"></i>
-                    </a>
+                    <div key={2} className="uk-navbar-item uk-navbar-right">
+                        <a className="uk-button uk-button-default" href="/auth/google">
+                            <span className="uk-margin-small-right">Log In</span>
+                            <i className="fab fa-google-plus-g"></i>
+                        </a>
+                    </div>
                 );
             default:
-                return (
-                    <a className="uk-button uk-button-default" href="/api/logout">
-                        <span>Log out</span>
-                    </a>
-                );
+                return [
+                    <div key={0} className="uk-navbar-item">
+                        <Payments></Payments>
+                    </div>,
+                    <div key={1} className="uk-navbar-item">
+                        Credits: {this.props.authState.credits}$
+                    </div>,
+                    <div key={2} className="uk-navbar-item uk-navbar-right">
+                        <a className="uk-button uk-button-default" href="/api/logout">
+                            <span>Log out</span>
+                        </a>
+                    </div>
+                ];
         }
     }
 
-    render () {
+    render() {
         return (
             <nav className="uk-navbar uk-background-secondary uk-light" data-uk-navbar>
                 <Link className="uk-navbar-item uk-logo" to="/">AR</Link>
@@ -36,15 +47,14 @@ class Header extends React.Component {
                         <Link to="/survey/new">New survey</Link>
                     </li>
                 </ul>
-                <div className="uk-navbar-item uk-navbar-right">
-                    {this.renderContent()}
-                </div>
+                {this.renderContent()}
             </nav>
         );
     }
 }
 
-const mapStateToProps = state => ({ ...state.auth });
+
+const mapStateToProps = state => ({...state.auth});
 
 
 export default connect(mapStateToProps)(Header);

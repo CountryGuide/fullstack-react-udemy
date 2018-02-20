@@ -1,9 +1,10 @@
 const express       = require('express');
 const mongoose      = require('mongoose');
 const cookieSession = require('cookie-session');
-const bodyParser = require('body-parser');
+const bodyParser    = require('body-parser');
 const logger        = require('morgan');
 const passport      = require('passport');
+const path          = require("path");
 const keys          = require('./config/keys');
 
 require('./models/User');
@@ -33,6 +34,13 @@ app.use(passport.session());
 require('./routes/auth')(app);
 require('./routes/billing')(app);
 require('./routes/survey')(app);
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client', 'build')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 app.listen(PORT, () => {
     console.log(`App is running on port: ${PORT}`);

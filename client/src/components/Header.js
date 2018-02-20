@@ -11,7 +11,7 @@ class Header extends React.Component {
                 return;
             case false:
                 return (
-                    <div key={2} className="uk-navbar-item uk-navbar-right">
+                    <div className="uk-navbar-item uk-navbar-right">
                         <a className="uk-button uk-button-default" href="/auth/google">
                             <span className="uk-margin-small-right">Log In</span>
                             <i className="fab fa-google-plus-g"></i>

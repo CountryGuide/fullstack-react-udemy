@@ -7,6 +7,7 @@ const passport      = require('passport');
 const keys          = require('./config/keys');
 
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI)
@@ -31,6 +32,7 @@ app.use(passport.session());
 
 require('./routes/auth')(app);
 require('./routes/billing')(app);
+require('./routes/survey')(app);
 
 app.listen(PORT, () => {
     console.log(`App is running on port: ${PORT}`);

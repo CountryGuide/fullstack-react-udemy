@@ -1,0 +1,10 @@
+html
+    body
+        div(style='text-align:center')
+            h3 Test header
+            p Answer following question:
+            p #{survey.body}
+            div
+                a(href=redirectUrl + '/api/surveys/vote') Yes
+            div
+                a(href=redirectUrl + '/api/surveys/vote') No

@@ -4,20 +4,20 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from "./Header";
 import { Landing } from "./Landing";
+import { Dashboard } from "./Dashboard";
+import SurveyNew from "./surveys/SurveyNew";
 
 import * as actions from "../actions";
 
-
-const Dashboard = () => <h2>Dashboard</h2>;
-const Survey    = () => <h2>Survey</h2>;
+import './App.css';
 
 
 class App extends React.Component {
-    componentDidMount () {
+    componentDidMount() {
         this.props.fetchUser();
     }
 
-    render () {
+    render() {
         return (
             <div>
                 <BrowserRouter>
@@ -26,7 +26,7 @@ class App extends React.Component {
                         <div className="uk-container">
                             <Route path={'/'} exact component={Landing}/>
                             <Route path={'/survey'} exact component={Dashboard}/>
-                            <Route path={'/survey/new'} component={Survey}/>
+                            <Route path={'/survey/new'} component={SurveyNew}/>
                         </div>
                     </div>
                 </BrowserRouter>

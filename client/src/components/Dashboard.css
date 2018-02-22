@@ -1,0 +1,5 @@
+.add-survey {
+    line-height: 1;
+    font-size: 4rem;
+    transition: var(--standard-transition);
+}

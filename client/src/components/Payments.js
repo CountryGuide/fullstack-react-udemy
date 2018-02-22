@@ -1,11 +1,11 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import * as actions from '../actions';
 
 
 class Payments extends React.Component {
-    render () {
+    render() {
         return (
             <StripeCheckout
                 amount={1000}
@@ -20,5 +20,6 @@ class Payments extends React.Component {
         );
     }
 }
+
 
 export default connect(null, actions)(Payments);

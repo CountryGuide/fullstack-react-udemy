@@ -5,7 +5,7 @@ import Payments from "./Payments";
 
 
 class Header extends React.Component {
-    renderContent () {
+    renderContent() {
         switch (this.props.authState) {
             case null:
                 return;
@@ -35,7 +35,7 @@ class Header extends React.Component {
         }
     }
 
-    render () {
+    render() {
         return (
             <nav className="uk-navbar uk-background-secondary uk-light" data-uk-navbar>
                 <Link className="uk-navbar-item uk-logo" to="/">AR</Link>
@@ -52,6 +52,7 @@ class Header extends React.Component {
         );
     }
 }
+
 
 const mapStateToProps = state => ({ ...state.auth });
 

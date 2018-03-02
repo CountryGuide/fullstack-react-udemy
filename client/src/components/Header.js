@@ -41,7 +41,7 @@ class Header extends React.Component {
                 <Link className="uk-navbar-item uk-logo" to="/">AR</Link>
                 <ul className="uk-navbar-nav">
                     <li>
-                        <Link to="/survey">Surveys</Link>
+                        <Link to="/surveys">Surveys</Link>
                     </li>
                     <li>
                         <Link to="/survey/new">New survey</Link>

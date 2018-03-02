@@ -25,7 +25,7 @@ class App extends React.Component {
                         <Header/>
                         <div className="uk-container">
                             <Route path={'/'} exact component={Landing}/>
-                            <Route path={'/survey'} exact component={Dashboard}/>
+                            <Route path={'/surveys'} exact component={Dashboard}/>
                             <Route path={'/survey/new'} component={SurveyNew}/>
                         </div>
                     </div>

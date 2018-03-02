@@ -13,3 +13,10 @@ export const handleToken = token => async dispatch => {
 
     dispatch({ type: ActionTypes.FETCH_USER, payload: { user: user.data } });
 };
+
+export const sendSurvey = (values, history) => async dispatch => {
+    const user = await axios.post('/api/surveys', values);
+    history.push('/surveys');
+
+    dispatch({ type: ActionTypes.SUBMIT_SURVEY, payload: { user: user.data } })
+};

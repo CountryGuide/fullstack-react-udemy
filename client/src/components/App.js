@@ -10,6 +10,7 @@ import SurveyNew from "./surveys/SurveyNew";
 import * as actions from "../actions";
 
 import './App.css';
+import { Helmet } from "react-helmet";
 
 
 class App extends React.Component {
@@ -20,6 +21,9 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <Helmet>
+                    <title>AR</title>
+                </Helmet>
                 <BrowserRouter>
                     <div>
                         <Header/>

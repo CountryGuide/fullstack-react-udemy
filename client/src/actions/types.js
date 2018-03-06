@@ -1,4 +1,5 @@
 export const ActionTypes = {
     FETCH_USER: 'FETCH_USER',
+    FETCH_SURVEYS: 'FETCH_SURVEYS',
     SUBMIT_SURVEY: 'SUBMIT_SURVEY'
 };

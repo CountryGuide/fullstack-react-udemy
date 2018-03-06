@@ -2,6 +2,7 @@ import React from 'react';
 import SurveyForm from "./SurveyForm";
 import { SurveyFormReview } from "./SurveyFormReview";
 import { reduxForm } from "redux-form";
+import { Helmet } from "react-helmet";
 
 
 class SurveyNew extends React.Component {
@@ -19,6 +20,9 @@ class SurveyNew extends React.Component {
     render () {
         return (
             <div>
+                <Helmet>
+                    <title>AR: New survey</title>
+                </Helmet>
                 <h2 className="uk-text-uppercase uk-heading-divider uk-padding uk-padding-remove-horizontal">
                     New survey
                 </h2>

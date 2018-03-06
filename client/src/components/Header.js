@@ -37,7 +37,7 @@ class Header extends React.Component {
 
     render() {
         return (
-            <nav className="uk-navbar uk-background-secondary uk-light" data-uk-navbar>
+            <nav className="uk-navbar uk-background-secondary uk-light header" data-uk-navbar>
                 <Link className="uk-navbar-item uk-logo" to="/">AR</Link>
                 <ul className="uk-navbar-nav">
                     <li>

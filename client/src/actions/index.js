@@ -24,5 +24,5 @@ export const sendSurvey = (values, history) => async dispatch => {
 export const fetchSurveys = () => async dispatch => {
     const surveys = await axios.get('/api/surveys');
 
-    dispatch({ type: ActionTypes.FETCH_SURVEYS, payload: { surveys: surveys.data }});
+    dispatch({ type: ActionTypes.FETCH_SURVEYS, payload: { surveys: surveys.data.reverse() }});
 };

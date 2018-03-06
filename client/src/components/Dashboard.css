@@ -3,3 +3,8 @@
     font-size: 4rem;
     transition: var(--standard-transition);
 }
+
+.add-survey i {
+    border-radius: 50%;
+    background-color: #fff;
+}

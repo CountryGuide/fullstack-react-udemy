@@ -11,6 +11,7 @@ import * as actions from "../actions";
 
 import './App.css';
 import { Helmet } from "react-helmet";
+import { Footer } from "./Footer";
 
 
 class App extends React.Component {
@@ -25,13 +26,14 @@ class App extends React.Component {
                     <title>AR</title>
                 </Helmet>
                 <BrowserRouter>
-                    <div>
-                        <Header/>
-                        <div className="uk-container">
+                    <div className="application-container">
+                        <Header />
+                        <div className="main uk-margin-medium-left uk-margin-medium-right">
                             <Route path={'/'} exact component={Landing}/>
                             <Route path={'/surveys'} exact component={Dashboard}/>
                             <Route path={'/survey/new'} component={SurveyNew}/>
                         </div>
+                        <Footer/>
                     </div>
                 </BrowserRouter>
             </div>

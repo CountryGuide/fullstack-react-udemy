@@ -18,11 +18,17 @@ export const sendSurvey = (values, history) => async dispatch => {
     const user = await axios.post('/api/surveys', values);
     history.push('/surveys');
 
-    dispatch({ type: ActionTypes.SUBMIT_SURVEY, payload: { user: user.data } })
+    dispatch({ type: ActionTypes.SUBMIT_SURVEY, payload: { user: user.data } });
 };
 
 export const fetchSurveys = () => async dispatch => {
     const surveys = await axios.get('/api/surveys');
 
     dispatch({ type: ActionTypes.FETCH_SURVEYS, payload: { surveys: surveys.data.reverse() }});
+};
+
+export const deleteSurvey = (surveyId) => async dispatch => {
+    await axios.delete(`/api/surveys/${surveyId}`);
+
+    dispatch({ type: ActionTypes.SURVEY_DELETED });
 };

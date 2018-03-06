@@ -6,7 +6,13 @@ export function surveys(state = [], action) {
         case ActionTypes.FETCH_SURVEYS:
             return {
                 ...state,
-                surveys: action.payload.surveys
+                surveys: action.payload.surveys,
+                surveyRemoved: false
+            };
+        case ActionTypes.SURVEY_DELETED:
+            return {
+                ...state,
+                surveyRemoved: true
             };
         default:
             return state;

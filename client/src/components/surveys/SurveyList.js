@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchSurveys } from '../../actions';
+import { fetchSurveys, deleteSurvey } from '../../actions';
 import { connect } from "react-redux";
 
 
@@ -8,10 +8,23 @@ class SurveyList extends React.Component {
         this.props.fetchSurveys();
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.surveyRemoved) {
+            this.props.fetchSurveys();
+        }
+        return true;
+    }
+
     renderSurveys() {
         return this.props.surveys.map(survey => {
             return (
                 <div key={survey._id} className="uk-card uk-card-default uk-card-small uk-margin uk-animation-fade">
+                    <div className="uk-position-top-right">
+                        <i className="fas fa-trash-alt delete-survey"
+                           title="Delete survey"
+                           onClick={() => this.props.deleteSurvey(survey._id)}>
+                        </i>
+                    </div>
                     <div className="uk-card-header">
                         <div className="uk-card-title uk-margin-remove-bottom">{survey.title}</div>
                         <p className="uk-text-meta uk-margin-remove-top">{survey.subject}</p>
@@ -45,4 +58,4 @@ const mapStateToProps = ({ surveys }) => {
     return { ...surveys };
 };
 
-export default connect(mapStateToProps, { fetchSurveys })(SurveyList);
+export default connect(mapStateToProps, { fetchSurveys, deleteSurvey })(SurveyList);
